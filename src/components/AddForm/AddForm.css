@@ -1,0 +1,12 @@
+.ui.submit.button.publish:hover {
+  background-color: #16ab39;
+  color: white;
+}
+
+.ui.submit.button.publish{
+  text-transform: uppercase;
+}
+
+.ui.button.clear {
+    margin-left: 30px;
+}

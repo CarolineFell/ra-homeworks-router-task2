@@ -1,68 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Build status](https://ci.appveyor.com/api/projects/status/3fup1rqr5a8gp39e/branch/master?svg=true)](https://ci.appveyor.com/project/CarolineFell/ra-homeworks-router-task2/branch/master)
 
-## Available Scripts
+https://CarolineFell.github.io/ra-homeworks-router-task2/
 
-In the project directory, you can run:
+## Задача
 
-### `yarn start`
+Только id, content и created, в качестве остальных значений (имя, фото) - заглушки.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Общая механика
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+При нахождении на странице `/` отображается список существующих постов (GET на адрес http://localhost:7777/posts), полученные данные отображаются в виде карточек.
 
-### `yarn test`
+Кнопка "Создать пост" ведёт на страницу создания и добавления `/posts/new` (+ регулярные выражения).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+При клике на саму карточку происходит переход на страницу просмотра поста `/posts/{postId}`.
 
-### `yarn build`
+### Страница создания
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+На странице создания `/posts/new` отображается карточка создания:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Текстовое поле и кнопка "Опубликовать".
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+При нажатии на кнопку "Опубликовать", пост сохраняется (POST на адрес http://localhost:7777/posts body: `{"id": 0, "content": "То, что введено в поле ввода"}`), после чего осуществляется редирект на главную страницу.
 
-### `yarn eject`
+При нажатии на крестик (в верхнем правом углу) происходит редирект на главную без сохранения (advanced: сохранить в localStorage и потом вытащить оттуда).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Страница просмотра
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+На странице просмотра `/posts/{id}` отображается краточка просмотра:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Имя, дата, текст поста, подробнее (редактировать, удалить)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+При клике на кнопку "Удалить" происходит удаление поста (DELETE на адрес http://localhost:7777/posts/{id}), после чего осуществляется редирект на главную страницу.
 
-## Learn More
+При клике на кнопку "Редактировать" карточка просмотра заменяется карточкой редактирования:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+На карточке редактирования:
+* кнопка сохранить приводит к сохранению поста (POST на адрес http://localhost:7777/posts body: `{"id": не 0, "content": "То, что введено в поле ввода"}`) и  отображению карточки просмотра (с обновлёнными данными).
+* кнопка крестик приводит к возврату к карточки просмотра.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Важно**:
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. React Router позволяет использовать регулярные выражения в роутах: https://github.com/pillarjs/path-to-regexp/tree/v1.7.0

@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import Header from './components/Header/Header';
+import PostsList from './components/PostsList/PostsList';
+import CreatePost from './components/CreatePost/CreatePost';
+import ViewPost from './components/ViewPost/ViewPost';
 import './App.css';
 
-function App() {
-  return (
+class App extends React.Component {
+  render() {
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <Header />
+        <div className="ui text container segment">
+          <Router>
+            <div className="ui basic segment">
+              <div className="ui center aligned segment">
+                <Link to="/" className="ui icon button">
+                  <i className="home blue icon"></i>
+                </Link>
+                <Link to="/posts/new" className="ui positive button">Create post</Link>
+              </div>
+            </div>
+            <div className="ui basic segment">
+              <Switch>
+                <Route path="/posts/new" component={CreatePost} />
+                <Route path="/posts/:id" component={ViewPost} />
+                <Route path="/" exact component={PostsList} />
+              </Switch>
+            </div>
+          </Router>
+        </div>
+    </div>);
+  }
 }
 
 export default App;

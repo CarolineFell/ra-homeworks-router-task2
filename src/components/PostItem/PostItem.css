@@ -1,0 +1,51 @@
+.ui.centered.card {
+  display: flex;
+  flex-direction: row;
+  width: 500px;
+  padding: 20px;
+}
+
+.ui.card .image img {
+  border-radius: 50%;
+}
+
+.ui.small.circular.image {
+  background-color: transparent;
+}
+
+.ui.card .content {
+  border: none;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0;
+  max-width: 300px;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.post-date {
+  font-size: 14px;
+}
+
+.text {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.edit {
+  float: right;
+}
+
+i.grey.icon.icon.icon.icon:hover {
+  cursor: pointer;
+  color: #1e78d3;
+}
+
+.number {
+  margin-right: 10px;
+}
+
+.likes-dislikes-favourite {
+  display: flex;
+}

@@ -1,0 +1,7 @@
+.loader-bar {
+  display: flex;
+  justify-content: center;
+}
+.loader {
+  width: 300px;
+}
