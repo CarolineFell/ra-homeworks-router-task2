@@ -15,7 +15,7 @@ const PostItem = ({ content, created, children }) => {
         <img src={faker.image.avatar()} alt="avatar" />
       </div>
       <div className="content">
-        <a href="#" className="user-name">
+        <a href="/#" className="user-name">
           <h3>{faker.name.firstName()}</h3>
         </a>
         <div className="metadata">

@@ -8,5 +8,9 @@
 }
 
 .ui.button.clear {
-    margin-left: 30px;
+  margin-left: 30px;
+}
+
+.buttons {
+  text-align: left;
 }

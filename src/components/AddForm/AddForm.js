@@ -36,9 +36,11 @@ const AddForm = ({ content, onSubmit, children }) => {
       <div className="field">
         <textarea onChange={handleChange} value={value}></textarea>
       </div>
-      <div className="ui submit button publish" onClick={(evt) => handleSubmit(evt)}>Publish</div>
-      <div className="ui button clear" onClick={(evt) => handleClear(evt)}>Clear</div>
-      {children}
+      <div className="buttons">
+        <div className="ui submit button publish" onClick={(evt) => handleSubmit(evt)}>Publish</div>
+        <div className="ui button clear" onClick={(evt) => handleClear(evt)}>Clear</div>
+        {children}
+      </div>
     </form>
   );
 };

@@ -8,7 +8,6 @@ const CreatePost = () => {
 
   const handleSubmit = (value) => {
     axios
-      // пост сохраняется + body: {"id": 0, "content": "То, что введено в поле ввода"}
       .post(`${process.env.REACT_APP_POSTS_URL}/posts`, {
         id: 0,
         content: value,
@@ -20,7 +19,6 @@ const CreatePost = () => {
   };
 
   if (saved) {
-    // редирект на главную страницу
     return <Redirect to='/' />;
   }
 

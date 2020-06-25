@@ -56,7 +56,7 @@ class ViewPost extends React.Component {
   };
 
   render() {
-    const { post, deleted, edited, loading, back } = this.state;
+    const { post, deleted, edited, loading } = this.state;
 
     if (deleted) {
       return <Redirect to="/" />;
